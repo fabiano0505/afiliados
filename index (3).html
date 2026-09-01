@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia do Vendedor — Aprenda a vender no Mercado Livre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FFFFFF;
+    --ink: #111111;
+    --ink-soft: #404040;
+    --line: #D4D4D4;
+
+    --c1: #111111;
+    --c1-tint: #EDEDED;
+    --c2: #EAB308;
+    --c2-tint: #FEF3C7;
+    --c3: #DC2626;
+    --c3-tint: #FEE2E2;
+    --c4: #EA580C;
+    --c4-tint: #FFEDD5;
+    --action: #111111;
+    --action-deep: #EAB308;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.12;
+  }
+
+  a { color: var(--action-deep); }
+  p { color: var(--ink-soft); }
+
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---- NAV ---- */
+  nav {
+    border-bottom: 3px solid var(--ink);
+    position: sticky; top: 0;
+    background: rgba(251,246,236,0.94);
+    backdrop-filter: blur(6px);
+    z-index: 30;
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .brand { font-family: 'Fraunces', serif; font-weight: 800; font-size: 1.3rem; }
+  .brand .dot { color: var(--c1); }
+  nav ul { list-style: none; display: flex; gap: 4px; font-size: 0.9rem; font-weight: 700; }
+  nav ul a { text-decoration: none; padding: 8px 13px; border-radius: 100px; }
+  nav ul li:nth-child(1) a { color: var(--c1); }
+  nav ul li:nth-child(2) a { color: #946008; }
+  nav ul li:nth-child(3) a { color: var(--c3); }
+  nav ul li:nth-child(4) a { color: var(--c4); }
+  nav ul li:nth-child(5) a { color: var(--action-deep); }
+  nav ul a:hover { background: var(--ink); color: var(--cream) !important; }
+  .nav-links { display: flex; }
+  @media (max-width: 860px) { .nav-links { display: none; } }
+
+  /* ---- HERO ---- */
+  .hero { padding: 80px 0 60px; position: relative; overflow: hidden; }
+  .hero .wrap { display: grid; grid-template-columns: 1.2fr 0.9fr; gap: 40px; align-items: center; position: relative; }
+  @media (max-width: 780px) { .hero .wrap { grid-template-columns: 1fr; } }
+
+  .hero-kicker {
+    display: inline-block; font-size: 0.85rem; font-weight: 800; color: var(--ink);
+    background: var(--c2); padding: 6px 14px; border-radius: 100px; margin-bottom: 20px;
+    transform: rotate(-2deg);
+  }
+
+  .hero h1 { font-size: clamp(2.5rem, 5.2vw, 4.2rem); max-width: 13ch; }
+  .hero h1 .hl { background: linear-gradient(transparent 58%, var(--c1-tint) 58%); }
+
+  .hero-lede { margin-top: 22px; font-size: 1.18rem; color: var(--ink-soft); max-width: 46ch; }
+  .hero-cta { margin-top: 34px; display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn-primary, .btn-ghost {
+    display: inline-block; padding: 15px 28px; border-radius: 100px;
+    font-weight: 700; font-size: 0.98rem; text-decoration: none;
+    transition: transform 0.15s ease; border: 3px solid var(--ink);
+  }
+  .btn-primary { background: var(--action); color: var(--cream); }
+  .btn-primary:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--ink); }
+  .btn-ghost { color: var(--ink); background: transparent; }
+  .btn-ghost:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--ink); background: var(--cream); }
+
+  .tag-field { position: relative; height: 320px; }
+  .tag {
+    position: absolute; width: 108px; height: 108px; border-radius: 20% 20% 20% 2px;
+    border: 3px solid var(--ink); display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-weight: 800; font-size: 1.6rem; color: var(--ink);
+  }
+  .tag::after {
+    content: ""; position: absolute; top: 14px; right: 14px; width: 10px; height: 10px;
+    border-radius: 50%; background: var(--cream); border: 2px solid var(--ink);
+  }
+  .tag.t1 { background: var(--c1); color: var(--cream); top: 0; left: 10%; transform: rotate(-9deg); }
+  .tag.t1::after { border-color: var(--cream); }
+  .tag.t2 { background: var(--c2); top: 70px; left: 42%; transform: rotate(6deg); z-index: 2; }
+  .tag.t3 { background: var(--c3); color: var(--cream); top: 20px; left: 68%; transform: rotate(4deg); }
+  .tag.t3::after { border-color: var(--cream); }
+  .tag.t4 { background: var(--c4); color: var(--cream); top: 175px; left: 20%; transform: rotate(-5deg); }
+  .tag.t4::after { border-color: var(--cream); }
+  @media (max-width: 780px) { .tag-field { height: 220px; } .tag { width: 84px; height: 84px; font-size: 1.2rem; } }
+
+  /* ---- INTRO STRIP ---- */
+  .intro { padding: 10px 0 50px; }
+  .intro .wrap { max-width: 68ch; }
+  .intro p { font-size: 1.06rem; }
+  .intro p + p { margin-top: 14px; }
+
+  /* ---- CHAPTERS ---- */
+  .chapter { padding: 80px 0; border-top: 3px solid var(--ink); }
+  .chapter:last-of-type { border-bottom: 3px solid var(--ink); }
+  .chapter-1 { background: var(--c1-tint); }
+  .chapter-2 { background: var(--c2-tint); }
+  .chapter-3 { background: var(--c3-tint); }
+  .chapter-4 { background: var(--c4-tint); }
+
+  .chapter-inner { display: grid; grid-template-columns: 110px 1fr; gap: 32px; }
+  @media (max-width: 680px) { .chapter-inner { grid-template-columns: 1fr; gap: 14px; } }
+
+  .chapter-num {
+    font-family: 'Fraunces', serif; font-weight: 800; font-size: 3.4rem; line-height: 1;
+    width: 84px; height: 84px; display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; border: 3px solid var(--ink); background: var(--cream);
+  }
+  .chapter-1 .chapter-num { color: var(--c1); }
+  .chapter-2 .chapter-num { color: #946008; }
+  .chapter-3 .chapter-num { color: var(--c3); }
+  .chapter-4 .chapter-num { color: var(--c4); }
+
+  .chapter h2 { font-size: 2.1rem; margin-bottom: 14px; }
+  .chapter-lede { color: var(--ink-soft); max-width: 66ch; margin-bottom: 16px; font-size: 1.06rem; }
+  .chapter-body { max-width: 66ch; margin-bottom: 30px; }
+  .chapter-body p { margin-bottom: 14px; font-size: 0.99rem; }
+  .chapter-body strong { color: var(--ink); }
+
+  .sub-h {
+    font-family: 'Inter', sans-serif; font-weight: 800; font-size: 0.78rem;
+    letter-spacing: 0.02em; text-transform: none; color: var(--ink);
+    margin: 34px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--ink);
+    max-width: 66ch;
+  }
+  .chapter-1 .sub-h { border-color: var(--c1); }
+  .chapter-2 .sub-h { border-color: #946008; }
+  .chapter-3 .sub-h { border-color: var(--c3); }
+  .chapter-4 .sub-h { border-color: var(--c4); }
+
+  .steps { display: grid; gap: 16px; max-width: 68ch; }
+  .step { display: grid; grid-template-columns: 30px 1fr; gap: 12px; }
+  .step .bullet {
+    width: 26px; height: 26px; border-radius: 50%; border: 2.5px solid var(--ink);
+    display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800;
+    background: var(--cream);
+  }
+  .chapter-1 .step .bullet { color: var(--c1); }
+  .chapter-2 .step .bullet { color: #946008; }
+  .chapter-3 .step .bullet { color: var(--c3); }
+  .chapter-4 .step .bullet { color: var(--c4); }
+  .step-text strong { display: block; font-size: 1.02rem; margin-bottom: 3px; }
+  .step-text span { color: var(--ink-soft); font-size: 0.95rem; }
+
+  .example-box {
+    margin-top: 20px; padding: 22px 24px; background: var(--cream);
+    border: 2.5px solid var(--ink); border-radius: 4px 16px 4px 16px; max-width: 62ch;
+  }
+  .example-box h4 { font-size: 1rem; margin-bottom: 12px; }
+  .example-row {
+    display: flex; justify-content: space-between; padding: 8px 0;
+    border-top: 1px solid var(--line); font-size: 0.93rem;
+  }
+  .example-row:first-of-type { border-top: none; }
+  .example-row.total { font-weight: 800; color: var(--ink); border-top: 2px solid var(--ink); margin-top: 4px; padding-top: 10px; }
+  .example-row span:first-child { color: var(--ink-soft); }
+
+  .callout {
+    margin-top: 28px; padding: 18px 22px; background: var(--cream);
+    border: 2.5px solid var(--ink); border-radius: 4px 16px 4px 16px;
+    font-size: 0.95rem; color: var(--ink-soft); max-width: 62ch;
+  }
+  .callout strong { color: var(--ink); }
+
+  /* ---- CALCULATOR ---- */
+  .calc-box {
+    margin-top: 20px; padding: 26px; background: var(--cream);
+    border: 2.5px solid var(--ink); border-radius: 4px 20px 4px 20px; max-width: 62ch;
+  }
+  .calc-box h4 { font-size: 1.05rem; margin-bottom: 4px; }
+  .calc-box .calc-hint { font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 18px; }
+  .calc-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+  @media (max-width: 480px) { .calc-fields { grid-template-columns: 1fr; } }
+  .calc-field label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; }
+  .calc-field input, .calc-field select {
+    width: 100%; padding: 10px 12px; border: 2px solid var(--ink); border-radius: 8px;
+    font-family: 'Inter', sans-serif; font-size: 0.95rem; background: var(--cream); color: var(--ink);
+  }
+  .calc-result { border-top: 2px solid var(--ink); padding-top: 14px; }
+  .calc-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.93rem; color: var(--ink-soft); }
+  .calc-row.total { font-weight: 800; color: var(--ink); font-size: 1.05rem; border-top: 1px solid var(--line); margin-top: 6px; padding-top: 10px; }
+  .calc-row.total span:last-child.neg { color: var(--c4); }
+
+  /* ---- CHECKLIST ---- */
+  .checklist-section { padding: 90px 0; background: var(--c3-tint); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); }
+  .checklist-section h2 { font-size: 2.1rem; margin-bottom: 10px; }
+  .checklist-section > .wrap > p { max-width: 56ch; margin-bottom: 12px; font-size: 1.02rem; }
+  .progress-track { max-width: 62ch; height: 12px; background: var(--cream); border: 2px solid var(--ink); border-radius: 100px; overflow: hidden; margin-bottom: 30px; }
+  .progress-fill { height: 100%; width: 0%; background: var(--action); transition: width 0.25s ease; }
+  .check-list { display: grid; gap: 10px; max-width: 62ch; }
+  .check-item {
+    display: flex; align-items: center; gap: 14px; padding: 14px 18px;
+    background: var(--cream); border: 2px solid var(--ink); border-radius: 10px; cursor: pointer;
+    user-select: none;
+  }
+  .check-item input { width: 20px; height: 20px; accent-color: var(--action); flex-shrink: 0; cursor: pointer; }
+  .check-item span { font-size: 0.96rem; }
+  .check-item.checked { background: var(--action); }
+  .check-item.checked span { color: var(--cream); text-decoration: line-through; }
+
+  /* ---- QUIZ ---- */
+  .quiz-section { padding: 90px 0; }
+  .quiz-section h2 { font-size: 2.1rem; margin-bottom: 10px; }
+  .quiz-section > .wrap > p.quiz-intro { max-width: 56ch; margin-bottom: 40px; font-size: 1.02rem; }
+  .quiz-card {
+    max-width: 68ch; padding: 26px; margin-bottom: 20px;
+    background: var(--c1-tint); border: 2.5px solid var(--ink); border-radius: 4px 20px 4px 20px;
+  }
+  .quiz-card:nth-child(even) { background: var(--c2-tint); }
+  .quiz-q { font-size: 1.02rem; font-weight: 700; margin-bottom: 16px; }
+  .quiz-opts { display: grid; gap: 10px; }
+  .quiz-opt {
+    padding: 12px 16px; background: var(--cream); border: 2px solid var(--ink);
+    border-radius: 8px; font-size: 0.93rem; cursor: pointer; transition: background 0.15s;
+  }
+  .quiz-opt:hover { background: #fff; }
+  .quiz-opt.correct { background: var(--action); color: var(--cream); font-weight: 700; }
+  .quiz-opt.wrong { background: var(--c3); color: var(--cream); }
+  .quiz-explain { display: none; margin-top: 14px; padding: 12px 16px; background: var(--ink); color: var(--cream); border-radius: 8px; font-size: 0.9rem; }
+  .quiz-explain.show { display: block; }
+
+  /* ---- COMPARISON ---- */
+  .compare { padding: 90px 0; background: var(--ink); color: var(--cream); }
+  .compare h2 { font-size: 2.1rem; max-width: 20ch; margin-bottom: 12px; color: var(--cream); }
+  .compare-lede { color: #D4D4D4; max-width: 56ch; margin-bottom: 44px; }
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 680px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-col { padding: 32px; border-radius: 18px; }
+  .compare-col h3 { font-size: 1.4rem; margin-bottom: 18px; }
+  .compare-col.sell { background: var(--c2); }
+  .compare-col.aff { background: var(--c3); }
+  .compare-col.sell h3, .compare-col.sell li { color: var(--ink); }
+  .compare-col.aff h3, .compare-col.aff li { color: var(--cream); }
+  .compare-col ul { list-style: none; }
+  .compare-col li { padding: 11px 0; font-size: 0.95rem; }
+  .compare-col.sell li { border-top: 2px solid rgba(17,17,17,0.2); }
+  .compare-col.aff li { border-top: 2px solid rgba(255,255,255,0.25); }
+  .compare-col li:first-of-type { border-top: none; }
+  .compare-col li strong { font-weight: 800; }
+
+  /* ---- REACH TACTICS ---- */
+  .reach { padding: 90px 0; }
+  .reach h2 { font-size: 2.1rem; max-width: 18ch; margin-bottom: 12px; }
+  .reach > .wrap > p { max-width: 56ch; margin-bottom: 44px; font-size: 1.02rem; }
+  .tactics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  @media (max-width: 900px) { .tactics { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .tactics { grid-template-columns: 1fr; } }
+  .tactic { padding: 26px 20px; border: 2.5px solid var(--ink); }
+  .tactic:nth-child(1) { background: var(--c1-tint); }
+  .tactic:nth-child(2) { background: var(--c2-tint); }
+  .tactic:nth-child(3) { background: var(--c3-tint); }
+  .tactic:nth-child(4) { background: var(--c4-tint); }
+  .tactic .glyph { font-family: 'Fraunces', serif; font-weight: 800; font-size: 1.8rem; margin-bottom: 10px; }
+  .tactic:nth-child(1) .glyph { color: var(--c1); }
+  .tactic:nth-child(2) .glyph { color: #946008; }
+  .tactic:nth-child(3) .glyph { color: var(--c3); }
+  .tactic:nth-child(4) .glyph { color: var(--c4); }
+  .tactic h3 { font-size: 1.08rem; margin-bottom: 8px; }
+  .tactic p { color: var(--ink-soft); font-size: 0.93rem; }
+
+  /* ---- FAQ ---- */
+  .faq { padding: 90px 0; background: var(--c2-tint); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); }
+  .faq h2 { font-size: 2.1rem; max-width: 18ch; margin-bottom: 44px; }
+  .faq-item { border-top: 2px solid var(--ink); padding: 22px 0; max-width: 74ch; }
+  .faq-item:last-child { border-bottom: 2px solid var(--ink); }
+  .faq-item h3 { font-size: 1.08rem; margin-bottom: 8px; color: var(--ink); }
+  .faq-item p { font-size: 0.96rem; max-width: 66ch; }
+
+  /* ---- GLOSSARY ---- */
+  .glossary { padding: 90px 0; }
+  .glossary h2 { font-size: 2.1rem; margin-bottom: 44px; }
+  .gloss-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 48px; }
+  @media (max-width: 680px) { .gloss-grid { grid-template-columns: 1fr; } }
+  .gloss-item { border-left: 3px solid var(--action); padding-left: 16px; }
+  .gloss-item dt { font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.02rem; margin-bottom: 4px; }
+  .gloss-item dd { font-size: 0.93rem; color: var(--ink-soft); }
+
+  /* ---- CTA STRIP ---- */
+  .final-cta { background: var(--action); color: var(--cream); padding: 84px 0; border-top: 3px solid var(--c2); }
+  .final-cta h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); max-width: 16ch; color: var(--cream); }
+  .final-cta p { margin-top: 16px; color: #D4D4D4; max-width: 50ch; font-size: 1.06rem; }
+  .final-cta .hero-cta { margin-top: 30px; }
+  .final-cta .btn-primary { background: var(--c2); color: var(--ink); border-color: var(--c2); }
+  .final-cta .btn-ghost { color: var(--cream); border-color: var(--cream); }
+  .final-cta .btn-ghost:hover { background: var(--cream); color: var(--ink); }
+
+  /* ---- FOOTER ---- */
+  footer { padding: 40px 0; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.88rem; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Guia do Vendedor<span class="dot">.</span></div>
+    <div class="nav-links">
+      <ul>
+        <li><a href="#vender">Vender</a></li>
+        <li><a href="#afiliado">Afiliação</a></li>
+        <li><a href="#ganhar">Ganhos</a></li>
+        <li><a href="#alcance">Alcance</a></li>
+        <li><a href="#checklist">Checklist</a></li>
+        <li><a href="#quiz">Quiz</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="hero-kicker">UM GUIA COMPLETO, SEM ENROLAÇÃO</div>
+      <h1>Aprenda a <span class="hl">vender</span> no Mercado Livre do jeito certo</h1>
+      <p class="hero-lede">Quatro capítulos completos: como abrir e organizar sua conta de vendedor, como virar afiliado, como estruturar seus ganhos e como fazer seu anúncio chegar em mais gente — com exemplos numéricos, perguntas frequentes e glossário no final.</p>
+      <div class="hero-cta">
+        <a href="#vender" class="btn-primary">Começar pelo capítulo 1</a>
+        <a href="#faq" class="btn-ghost">Ir direto pras perguntas frequentes</a>
+      </div>
+    </div>
+    <div class="tag-field">
+      <div class="tag t1">01</div>
+      <div class="tag t2">02</div>
+      <div class="tag t3">03</div>
+      <div class="tag t4">04</div>
+    </div>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="wrap">
+    <p>Vender no Mercado Livre parece simples de fora — criar um anúncio e esperar o pedido chegar — mas quem já tentou sabe que existe uma engrenagem por trás: taxas que mudam por categoria, um algoritmo de busca que privilegia certos comportamentos, e uma reputação que funciona quase como um placar público.</p>
+    <p>Este guia foi organizado para ir do zero ao primeiro ganho: primeiro você entende como estruturar uma conta de vendedor, depois conhece o caminho alternativo (e mais leve) de virar afiliado, em seguida aprende a organizar o dinheiro que entra, e fecha com táticas concretas para aparecer para mais gente. Leia na ordem ou pule direto pro capítulo que resolve sua dúvida agora.</p>
+  </div>
+</section>
+
+<main>
+
+  <section class="chapter chapter-1" id="vender">
+    <div class="wrap chapter-inner">
+      <div class="chapter-num">01</div>
+      <div>
+        <h2>Como começar a vender</h2>
+        <p class="chapter-lede">Antes de anunciar qualquer coisa, existe uma ordem que evita dor de cabeça depois — principalmente com taxas e reputação.</p>
+
+        <div class="chapter-body">
+          <p>O Mercado Livre funciona como uma vitrine gigante: seu anúncio compete lado a lado com milhares de outros vendedores na mesma busca. Isso significa que os primeiros passos — cadastro, categoria certa, fotos e título — pesam mais do que parecem, porque definem se seu produto sequer vai aparecer para quem está procurando.</p>
+        </div>
+
+        <div class="sub-h">Montando a base da conta</div>
+        <div class="steps">
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Crie a conta e verifique seus dados</strong><span>CPF, endereço e uma conta bancária no seu nome. Sem isso, o Mercado Livre trava seus repasses assim que o volume de vendas cresce.</span></div></div>
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Escolha entre Mercado Livre e Mercado Shops</strong><span>O marketplace tem tráfego pronto e comprador já disposto a comprar; a loja própria (Mercado Shops) dá mais controle de marca, mas exige que você traga seu próprio público. Para quem está começando, o marketplace tradicional é o caminho mais rápido até a primeira venda.</span></div></div>
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Escolha a categoria com cuidado</strong><span>Cada categoria tem uma comissão diferente e um conjunto de campos obrigatórios (ficha técnica). Categoria errada pode até derrubar seu anúncio do ar depois de publicado.</span></div></div>
+        </div>
+
+        <div class="sub-h">Entendendo as taxas antes de precificar</div>
+        <div class="chapter-body">
+          <p>A maior armadilha de quem começa é definir o preço de venda olhando só para o custo do produto. O Mercado Livre cobra uma <strong>comissão por categoria</strong> (que varia de cerca de 11% a 17% dependendo do tipo de item) mais o <strong>custo de frete</strong>, que em muitos casos o vendedor precisa embutir no preço para oferecer frete grátis — hoje um fator quase obrigatório para aparecer bem no ranqueamento.</p>
+        </div>
+        <div class="example-box">
+          <h4>Exemplo simplificado — produto vendido a R$ 100</h4>
+          <div class="example-row"><span>Preço de venda</span><span>R$ 100,00</span></div>
+          <div class="example-row"><span>Custo do produto</span><span>− R$ 45,00</span></div>
+          <div class="example-row"><span>Comissão do Mercado Livre (~14%)</span><span>− R$ 14,00</span></div>
+          <div class="example-row"><span>Frete (embutido no preço)</span><span>− R$ 18,00</span></div>
+          <div class="example-row total"><span>Margem final</span><span>R$ 23,00</span></div>
+        </div>
+
+        <div class="sub-h">Agora calcule com os seus números</div>
+        <div class="calc-box">
+          <h4>Calculadora de margem</h4>
+          <p class="calc-hint">Preencha com o preço de venda, o custo do produto e o frete estimado. A comissão é calculada automaticamente pela faixa da categoria.</p>
+          <div class="calc-fields">
+            <div class="calc-field">
+              <label for="calc-preco">Preço de venda (R$)</label>
+              <input type="number" id="calc-preco" value="100" min="0" step="1">
+            </div>
+            <div class="calc-field">
+              <label for="calc-custo">Custo do produto (R$)</label>
+              <input type="number" id="calc-custo" value="45" min="0" step="1">
+            </div>
+            <div class="calc-field">
+              <label for="calc-frete">Frete estimado (R$)</label>
+              <input type="number" id="calc-frete" value="18" min="0" step="1">
+            </div>
+            <div class="calc-field">
+              <label for="calc-categoria">Faixa de comissão</label>
+              <select id="calc-categoria">
+                <option value="0.11">Baixa (~11%)</option>
+                <option value="0.14" selected>Média (~14%)</option>
+                <option value="0.17">Alta (~17%)</option>
+              </select>
+            </div>
+          </div>
+          <div class="calc-result">
+            <div class="calc-row"><span>Comissão do Mercado Livre</span><span id="calc-comissao">R$ 14,00</span></div>
+            <div class="calc-row"><span>Frete embutido</span><span id="calc-frete-out">R$ 18,00</span></div>
+            <div class="calc-row"><span>Custo do produto</span><span id="calc-custo-out">R$ 45,00</span></div>
+            <div class="calc-row total"><span>Sua margem final</span><span id="calc-margem">R$ 23,00</span></div>
+          </div>
+        </div>
+
+        <div class="sub-h">Fotos e título que realmente convertem</div>
+        <div class="steps">
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Fotografe com luz natural e fundo neutro</strong><span>Anúncios com 5 ou mais fotos nítidas convertem muito mais do que descrição longa. A primeira foto é a que aparece na busca — capriche nela.</span></div></div>
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Escreva o título pensando em busca, não em venda</strong><span>"Tênis Nike Air Max 42 Preto" vende mais que "Promoção imperdível!!" porque é assim que as pessoas digitam na busca — marca, modelo, característica.</span></div></div>
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Preencha a ficha técnica por completo</strong><span>Campos vazios reduzem a chance do seu anúncio aparecer em filtros de busca (cor, tamanho, voltagem, etc).</span></div></div>
+        </div>
+
+        <div class="callout"><strong>Erro comum:</strong> anunciar sem calcular o frete grátis no preço. Isso come a margem e o vendedor só percebe no fim do mês, quando o repasse chega bem menor do que esperava.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter chapter-2" id="afiliado">
+    <div class="wrap chapter-inner">
+      <div class="chapter-num">02</div>
+      <div>
+        <h2>Como se tornar afiliado</h2>
+        <p class="chapter-lede">Se você não quer estocar produto, o programa de afiliados permite ganhar comissão divulgando produtos de outros vendedores.</p>
+
+        <div class="chapter-body">
+          <p>O programa de afiliados existe separado da conta de vendedor. Em vez de anunciar o próprio produto, você indica produtos que já estão à venda no Mercado Livre e recebe uma comissão sempre que alguém compra através do seu link. É o caminho mais leve para começar a ganhar dinheiro na plataforma, porque tira do seu lado o trabalho de estoque, embalagem e envio.</p>
+        </div>
+
+        <div class="sub-h">Cadastro e primeiros passos</div>
+        <div class="steps">
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Acesse o Mercado Livre Afiliados</strong><span>É um cadastro separado da conta de vendedor — qualquer pessoa com CPF pode entrar, não precisa ter loja nem CNPJ.</span></div></div>
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Escolha produtos com bom histórico de venda</strong><span>Produtos com muitas avaliações e vendas recorrentes convertem melhor do que itens novos sem prova social — o comprador confia mais em quem já tem histórico.</span></div></div>
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Gere seu link de afiliado</strong><span>Cada link é único e rastreia a comissão até 24h depois do clique, mesmo que a pessoa acabe comprando outro produto diferente do que você indicou.</span></div></div>
+        </div>
+
+        <div class="sub-h">Quanto dá pra ganhar</div>
+        <div class="chapter-body">
+          <p>A comissão varia bastante por categoria. Categorias de moda, casa e beleza costumam pagar percentuais maiores; eletrônicos e tecnologia costumam pagar percentuais menores, mas compensam pelo ticket médio mais alto. O ganho real depende muito mais do volume de cliques qualificados que você consegue gerar do que da comissão isolada de um produto.</p>
+        </div>
+
+        <div class="sub-h">Onde e como divulgar</div>
+        <div class="steps">
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Divulgue com contexto, não só o link</strong><span>Um comentário real sobre o produto — "usei por 2 semanas, o que gostei e o que não gostei" — converte muito mais que só colar o link pelado.</span></div></div>
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Escolha o canal certo pro seu público</strong><span>Instagram e TikTok funcionam bem para produtos visuais (moda, decoração); grupos de WhatsApp funcionam bem para promoções pontuais; um blog ou canal no YouTube funciona melhor para comparações mais aprofundadas.</span></div></div>
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Acompanhe o painel de afiliados</strong><span>Ele mostra quais produtos e categorias estão realmente gerando comissão, para você focar energia onde já está funcionando.</span></div></div>
+        </div>
+
+        <div class="callout"><strong>Diferença chave:</strong> vendedor lida com estoque, envio e reputação. Afiliado só indica e recebe comissão — risco e trabalho bem menores, mas também menos controle sobre preço e prazo de entrega.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter chapter-3" id="ganhar">
+    <div class="wrap chapter-inner">
+      <div class="chapter-num">03</div>
+      <div>
+        <h2>Como estruturar seus ganhos</h2>
+        <p class="chapter-lede">A diferença entre quem vende por hobby e quem vive disso está em separar o dinheiro certo, na hora certa.</p>
+
+        <div class="chapter-body">
+          <p>É comum o vendedor iniciante confundir faturamento com lucro — ver o valor total de vendas do mês e achar que aquilo é ganho real. Antes de qualquer plano de crescimento, vale organizar o dinheiro em três baldes separados: custo do que foi vendido, taxas e impostos, e o que sobra de fato.</p>
+        </div>
+
+        <div class="sub-h">Organizando o financeiro</div>
+        <div class="steps">
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Separe custo de produto, taxa e imposto antes do lucro</strong><span>Só depois desses três descontos você sabe o que realmente sobrou — e pode decidir quanto tirar para uso pessoal sem comprometer o caixa do negócio.</span></div></div>
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Reinvista uma fatia fixa em anúncio</strong><span>Vendedores que crescem de forma consistente costumam reservar entre 5% e 15% do lucro para Product Ads, em vez de gastar tudo com o negócio parado.</span></div></div>
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Acompanhe reputação como quem acompanha caixa</strong><span>Reputação baixa reduz a visibilidade do anúncio, o que reduz venda — é uma métrica financeira, não só uma "nota" decorativa no perfil.</span></div></div>
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Diversifique entre alguns produtos, não um só</strong><span>Depender de um único item deixa o ganho vulnerável a qualquer mudança de concorrência, de taxa ou de sazonalidade.</span></div></div>
+        </div>
+
+        <div class="sub-h">Como fica na prática, todo mês</div>
+        <div class="chapter-body">
+          <p>Uma rotina simples que funciona bem: no fechamento do mês, separe o valor bruto vendido, subtraia custo de produto e taxas para chegar no lucro líquido, reserve a fatia para reinvestimento em anúncio, e só então defina quanto sobra como retirada pessoal. Repetir esse processo mês a mês é o que transforma vendas ocasionais em um negócio com previsibilidade.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter chapter-4" id="alcance">
+    <div class="wrap chapter-inner">
+      <div class="chapter-num">04</div>
+      <div>
+        <h2>Como chegar em mais gente</h2>
+        <p class="chapter-lede">Alcance no Mercado Livre é metade algoritmo, metade hábito de manutenção do anúncio.</p>
+
+        <div class="chapter-body">
+          <p>O algoritmo de busca do Mercado Livre prioriza vendedores que mantêm o anúncio "vivo" — respondendo rápido, atualizando preço e estoque, e acumulando avaliações positivas. Não é só sobre ter o menor preço: é sobre sinalizar constantemente que aquele anúncio é confiável e está sendo cuidado.</p>
+        </div>
+
+        <div class="sub-h">Sinais que o algoritmo valoriza</div>
+        <div class="steps">
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Responda perguntas em minutos, não em dias</strong><span>O algoritmo prioriza vendedores que respondem rápido — isso conta tanto quanto preço na hora de decidir quem aparece primeiro.</span></div></div>
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Use Product Ads nos primeiros anúncios</strong><span>Um anúncio novo, sem histórico de venda, dificilmente aparece bem sem um impulso pago no início — é o jeito de "furar a fila" enquanto constrói reputação orgânica.</span></div></div>
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Atualize preço e estoque toda semana</strong><span>Anúncios "parados" perdem posição mesmo com bom histórico, porque o sistema entende falta de atividade como sinal de abandono.</span></div></div>
+          <div class="step"><div class="bullet">✓</div><div class="step-text"><strong>Peça avaliação após a entrega</strong><span>Uma mensagem simples pós-venda aumenta a taxa de avaliações, que é fator direto de ranqueamento e também de confiança para o próximo comprador.</span></div></div>
+        </div>
+
+        <div class="sub-h">Levando tráfego de fora da plataforma</div>
+        <div class="chapter-body">
+          <p>Além do que acontece dentro do Mercado Livre, é possível trazer gente de fora: um story no Instagram, uma indicação em grupo de WhatsApp ou um vídeo curto mostrando o produto em uso geram cliques externos que o próprio Mercado Livre reconhece como sinal positivo, ajudando o anúncio a subir de posição também na busca interna.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<section class="compare">
+  <div class="wrap">
+    <h2>Vendedor ou afiliado — qual caminho combina com você</h2>
+    <p class="compare-lede">Os dois modelos convivem no mesmo ecossistema, mas pedem esforço e recursos bem diferentes.</p>
+    <div class="compare-grid">
+      <div class="compare-col sell">
+        <h3>Vendedor</h3>
+        <ul>
+          <li><strong>Precisa de estoque</strong> — sim, físico ou sob encomenda</li>
+          <li><strong>Investimento inicial</strong> — médio a alto</li>
+          <li><strong>Controle de preço</strong> — total</li>
+          <li><strong>Responsável pelo envio</strong> — sim</li>
+          <li><strong>Tempo até o primeiro ganho</strong> — depende da primeira venda</li>
+        </ul>
+      </div>
+      <div class="compare-col aff">
+        <h3>Afiliado</h3>
+        <ul>
+          <li><strong>Precisa de estoque</strong> — não</li>
+          <li><strong>Investimento inicial</strong> — praticamente zero</li>
+          <li><strong>Controle de preço</strong> — nenhum</li>
+          <li><strong>Responsável pelo envio</strong> — não</li>
+          <li><strong>Tempo até o primeiro ganho</strong> — depende do alcance da divulgação</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reach">
+  <div class="wrap">
+    <h2>Táticas rápidas de alcance</h2>
+    <p>Ações pequenas e recorrentes que, somadas, fazem diferença real na posição do seu anúncio.</p>
+    <div class="tactics">
+      <div class="tactic">
+        <div class="glyph">Aa</div>
+        <h3>Título pensado para busca</h3>
+        <p>Marca, modelo, cor e característica principal — nessa ordem — porque é assim que as pessoas buscam.</p>
+      </div>
+      <div class="tactic">
+        <div class="glyph">↗</div>
+        <h3>Cross-post em redes sociais</h3>
+        <p>Link do anúncio no Instagram ou WhatsApp gera tráfego externo, que o Mercado Livre também valoriza.</p>
+      </div>
+      <div class="tactic">
+        <div class="glyph">+</div>
+        <h3>Kits e combos</h3>
+        <p>Agrupar produtos complementares aumenta o ticket médio sem precisar de mais tráfego.</p>
+      </div>
+      <div class="tactic">
+        <div class="glyph">◷</div>
+        <h3>Horário de publicação</h3>
+        <p>Atualizações no fim da tarde pegam o pico de navegação das pessoas depois do trabalho.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="checklist-section" id="checklist">
+  <div class="wrap">
+    <h2>Checklist antes de publicar seu primeiro anúncio</h2>
+    <p>Marque cada item conforme for resolvendo — a barra mostra o quanto falta.</p>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="check-list" id="check-list">
+      <label class="check-item"><input type="checkbox"><span>Conta verificada com CPF, endereço e conta bancária</span></label>
+      <label class="check-item"><input type="checkbox"><span>Categoria certa escolhida e ficha técnica preenchida</span></label>
+      <label class="check-item"><input type="checkbox"><span>Margem calculada incluindo comissão e frete</span></label>
+      <label class="check-item"><input type="checkbox"><span>Pelo menos 5 fotos com luz natural e fundo neutro</span></label>
+      <label class="check-item"><input type="checkbox"><span>Título escrito pensando em busca (marca, modelo, característica)</span></label>
+      <label class="check-item"><input type="checkbox"><span>Frete grátis embutido no preço, se aplicável</span></label>
+      <label class="check-item"><input type="checkbox"><span>Plano para responder perguntas em poucos minutos</span></label>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2>Perguntas frequentes</h2>
+
+    <div class="faq-item">
+      <h3>Preciso de CNPJ para vender no Mercado Livre?</h3>
+      <p>Não para começar. Você pode vender como pessoa física, mas a partir de um certo volume de vendas o próprio regime tributário costuma tornar o CNPJ (geralmente MEI) mais vantajoso e organizado.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Quanto tempo leva pra primeira venda?</h3>
+      <p>Varia muito por categoria e concorrência, mas anúncios bem otimizados (fotos, título, ficha técnica completa) e com um pequeno investimento em Product Ads costumam converter mais rápido do que anúncios "parados" esperando aparecer sozinhos.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Dá pra ser vendedor e afiliado ao mesmo tempo?</h3>
+      <p>Sim, são cadastros independentes. Muitos vendedores usam o link de afiliado para divulgar até os próprios produtos em redes sociais, acumulando as duas fontes de ganho.</p>
+    </div>
+    <div class="faq-item">
+      <h3>O que mais derruba a posição de um anúncio?</h3>
+      <p>Demora para responder perguntas, estoque zerado por muito tempo, e reclamações não resolvidas. Esses três fatores pesam mais no ranqueamento do que a maioria dos vendedores imagina.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Vale a pena pagar por anúncio patrocinado (Product Ads) desde o início?</h3>
+      <p>Para produtos novos, sim, geralmente vale — é o que compensa a falta de histórico de vendas. Depois que o anúncio ganha avaliações e um volume de vendas orgânico, o investimento em ads pode ser reduzido gradualmente.</p>
+    </div>
+  </div>
+</section>
+
+<section class="glossary">
+  <div class="wrap">
+    <h2>Glossário rápido</h2>
+    <dl class="gloss-grid">
+      <div class="gloss-item"><dt>Mercado Shops</dt><dd>Loja própria dentro do ecossistema Mercado Livre, com mais controle de marca e menos tráfego automático.</dd></div>
+      <div class="gloss-item"><dt>Product Ads</dt><dd>Sistema de anúncio patrocinado que impulsiona a posição de um produto na busca, mediante pagamento por resultado.</dd></div>
+      <div class="gloss-item"><dt>Reputação</dt><dd>Indicador público baseado em vendas concluídas, prazo de envio e avaliações, que influencia diretamente o ranqueamento do vendedor.</dd></div>
+      <div class="gloss-item"><dt>Frete grátis</dt><dd>Benefício oferecido ao comprador cujo custo é, na prática, absorvido pelo vendedor no preço do produto.</dd></div>
+      <div class="gloss-item"><dt>Link de afiliado</dt><dd>URL personalizada que rastreia cliques e vendas geradas por um afiliado específico, gerando comissão.</dd></div>
+      <div class="gloss-item"><dt>Ficha técnica</dt><dd>Conjunto de campos estruturados do anúncio (cor, tamanho, voltagem etc.) usados pelos filtros de busca da plataforma.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="quiz-section" id="quiz">
+  <div class="wrap">
+    <h2>Teste seu conhecimento</h2>
+    <p class="quiz-intro">Clique na alternativa que você acha correta — o resultado e a explicação aparecem na hora.</p>
+
+    <div class="quiz-card" data-correct="1">
+      <div class="quiz-q">1. Antes de definir o preço de um produto, o que é essencial calcular junto?</div>
+      <div class="quiz-opts">
+        <div class="quiz-opt" data-opt="0">Só o custo do produto</div>
+        <div class="quiz-opt" data-opt="1">Custo do produto, comissão e frete</div>
+        <div class="quiz-opt" data-opt="2">Apenas o preço da concorrência</div>
+      </div>
+      <div class="quiz-explain">Isso mesmo: ignorar comissão e frete no cálculo é o erro mais comum de quem começa — a margem "some" só no fim do mês.</div>
+    </div>
+
+    <div class="quiz-card" data-correct="2">
+      <div class="quiz-q">2. Um afiliado do Mercado Livre precisa ter loja própria para se cadastrar?</div>
+      <div class="quiz-opts">
+        <div class="quiz-opt" data-opt="0">Sim, é obrigatório ter uma loja ativa</div>
+        <div class="quiz-opt" data-opt="1">Sim, mas só depois da primeira comissão</div>
+        <div class="quiz-opt" data-opt="2">Não, qualquer pessoa com CPF pode se afiliar</div>
+      </div>
+      <div class="quiz-explain">Exato: o cadastro de afiliado é independente da conta de vendedor — não precisa de loja nem estoque.</div>
+    </div>
+
+    <div class="quiz-card" data-correct="0">
+      <div class="quiz-q">3. O que mais ajuda um anúncio a subir de posição na busca?</div>
+      <div class="quiz-opts">
+        <div class="quiz-opt" data-opt="0">Responder perguntas rápido e manter estoque/preço atualizados</div>
+        <div class="quiz-opt" data-opt="1">Trocar a foto principal toda semana</div>
+        <div class="quiz-opt" data-opt="2">Usar o máximo de emojis no título</div>
+      </div>
+      <div class="quiz-explain">Correto: velocidade de resposta e manutenção ativa do anúncio pesam mais no algoritmo do que detalhes estéticos como emojis no título.</div>
+    </div>
+
+    <div class="quiz-card" data-correct="1">
+      <div class="quiz-q">4. Por que reservar uma fatia fixa do lucro para reinvestir em anúncio?</div>
+      <div class="quiz-opts">
+        <div class="quiz-opt" data-opt="0">Porque é obrigatório pelo Mercado Livre</div>
+        <div class="quiz-opt" data-opt="1">Porque sustenta o crescimento sem depender só de vendas orgânicas</div>
+        <div class="quiz-opt" data-opt="2">Porque aumenta automaticamente a reputação</div>
+      </div>
+      <div class="quiz-explain">Isso: reinvestir uma parte fixa em Product Ads dá previsibilidade de crescimento, especialmente pra produtos novos sem histórico.</div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>Pronto pra dar o primeiro passo?</h2>
+    <p>Escolha se você quer vender produto próprio ou começar como afiliado — os dois caminhos estão descritos acima, com os passos exatos.</p>
+    <div class="hero-cta">
+      <a href="#vender" class="btn-primary">Ver passo a passo de vendedor</a>
+      <a href="#afiliado" class="btn-ghost">Ver passo a passo de afiliado</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Guia do Vendedor — conteúdo educativo independente.</span>
+    <span>Não afiliado oficialmente ao Mercado Livre.</span>
+  </div>
+</footer>
+
+<script>
+  // ---- Calculadora de margem ----
+  const calcPreco = document.getElementById('calc-preco');
+  const calcCusto = document.getElementById('calc-custo');
+  const calcFrete = document.getElementById('calc-frete');
+  const calcCategoria = document.getElementById('calc-categoria');
+  const fmt = n => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  function updateCalc() {
+    const preco = parseFloat(calcPreco.value) || 0;
+    const custo = parseFloat(calcCusto.value) || 0;
+    const frete = parseFloat(calcFrete.value) || 0;
+    const taxa = parseFloat(calcCategoria.value) || 0;
+    const comissao = preco * taxa;
+    const margem = preco - custo - frete - comissao;
+
+    document.getElementById('calc-comissao').textContent = fmt(comissao);
+    document.getElementById('calc-frete-out').textContent = fmt(frete);
+    document.getElementById('calc-custo-out').textContent = fmt(custo);
+    const margemEl = document.getElementById('calc-margem');
+    margemEl.textContent = fmt(margem);
+    margemEl.style.color = margem < 0 ? '#DC2626' : '';
+  }
+  [calcPreco, calcCusto, calcFrete, calcCategoria].forEach(el => el.addEventListener('input', updateCalc));
+  updateCalc();
+
+  // ---- Checklist ----
+  const checkItems = document.querySelectorAll('#check-list .check-item input');
+  const progressFill = document.getElementById('progress-fill');
+  function updateProgress() {
+    const total = checkItems.length;
+    const done = Array.from(checkItems).filter(i => i.checked).length;
+    progressFill.style.width = (done / total * 100) + '%';
+  }
+  checkItems.forEach(input => {
+    input.addEventListener('change', () => {
+      input.closest('.check-item').classList.toggle('checked', input.checked);
+      updateProgress();
+    });
+  });
+  updateProgress();
+
+  // ---- Quiz ----
+  document.querySelectorAll('.quiz-card').forEach(card => {
+    const correct = card.dataset.correct;
+    const opts = card.querySelectorAll('.quiz-opt');
+    const explain = card.querySelector('.quiz-explain');
+    let answered = false;
+    opts.forEach(opt => {
+      opt.addEventListener('click', () => {
+        if (answered) return;
+        answered = true;
+        opts.forEach(o => {
+          if (o.dataset.opt === correct) o.classList.add('correct');
+          else if (o === opt) o.classList.add('wrong');
+        });
+        explain.classList.add('show');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
